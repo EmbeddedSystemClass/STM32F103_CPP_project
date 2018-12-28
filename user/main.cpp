@@ -32,7 +32,6 @@ RCC_ClocksTypeDef SYSclock;
 
 int main(int argc, char *argv[])
 {
-	
 	RCC_Configuration();
 	MotorDriverGPIO_Init();
 
@@ -41,7 +40,6 @@ int main(int argc, char *argv[])
 		
 	RCC_GetClocksFreq(&SYSclock);
 
-	
 	GUA_Timer1_PWM_Init(20000);	
 	GUA_Timer1_PWM_Status(GUA_TIMER1_PWM_STATUS_ON);   	
 	
