@@ -26,6 +26,7 @@
  extern "C" {
 #endif 
 #include "stm32f10x_it.h"
+#include "Usart.hpp"
 
 /** @addtogroup STM32F10x_StdPeriph_Template
   * @{
@@ -144,12 +145,39 @@ void EXTI9_5_IRQHandler(void)
  
 }
 
-//////////////
+
 void USART1_IRQHandler(void)
 {
-	
-		
+		uint8_t ucTemp;
+		if (USART_GetITStatus(DEBUG_USARTx,USART_IT_RXNE)!=RESET) 
+		{
+				ucTemp = USART_ReceiveData( DEBUG_USARTx );
+				rxCounter++;
+				if(rxFlag == 2)
+				{
+					USART_RX_BUF[USART_RX_STA++]=ucTemp ;
+					if(USART_RX_STA>=CommandLenth)
+					{
+						rxCounterf++;
+						finishFlah = 1;
+						rxFlag = 0;
+						USART_RX_STA = 0;
+					}
+				}
+				/*报头 接收 判断*/
+				else if(ucTemp == 0xA5 && rxFlag == 0)
+				{
+					rxFlag = 1;
+					USART_RX_BUF[USART_RX_STA++]=ucTemp ;
+				}
+				else if(ucTemp == 0x85 && rxFlag ==1 )
+				{
+					rxFlag = 2;
+					USART_RX_BUF[USART_RX_STA++]=ucTemp ;
+				}
+		}
 }
+
 #ifdef __cplusplus
 }
 #endif

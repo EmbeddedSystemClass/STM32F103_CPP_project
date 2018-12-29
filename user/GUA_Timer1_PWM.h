@@ -52,4 +52,8 @@ void GUA_Timer1_PWM_Status(GUA_U8 nGUA_Timer1_PWM_Status);
 void GUA_Timer1_PWM_SetDutyCycle(GUA_16 nGUA_Timer1_PWM_DutyCycle, uint8_t CH);  
 void GUA_Timer1_PWM_Init(GUA_U16 nGUA_Timer1_PWM_Prescaler);  
   
+#define PitchCH  	3
+#define YawCH			4
+	
+	
 #endif  

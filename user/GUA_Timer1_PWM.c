@@ -93,10 +93,10 @@ void GUA_Timer1_PWM_Status(GUA_U8 nGUA_Timer1_PWM_Status)
 //******************************************************************************    
 void GUA_Timer1_PWM_SetDutyCycle(GUA_16 nGUA_Timer1_PWM_DutyCycle,uint8_t CH)  
 {  
-	if(CH ==1 )
+	if(CH ==PitchCH )
 		TIM_SetCompare3(TIM1, nGUA_Timer1_PWM_DutyCycle);
 		//TIM_SetCompare1(TIM1, GUA_TIMER1_PWM_PERIOD*nGUA_Timer1_PWM_DutyCycle/100);   
-	else if(CH==2)
+	else if(CH==YawCH)
 		TIM_SetCompare4(TIM1, nGUA_Timer1_PWM_DutyCycle);  
 }  
   

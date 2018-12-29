@@ -72,6 +72,9 @@ void TurnONMotro(void);
 void MotorDriverGPIO_Init(void);
 void TIM4_init(void);
 void MotorControlFunc(void);
+void TurnONLED(void);
+void TurnOFFLED(void);
+
 /* Private constants ---------------------------------------------------------*/
 /* Private macros ------------------------------------------------------------*/
 /* Private types -------------------------------------------------------------*/
